@@ -10,7 +10,8 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-parser=argparse.ArgumentParser(description="Skrypt do pobrania i obliczenia średniej na USOS")
+parser = argparse.ArgumentParser(prog='UsosGrades',
+                                 description="Skrypt do pobrania i obliczenia średniej na USOS")
 parser.add_argument("username", type=str, help="Identyfikator logowania na USOS / PESEL")
 parser.add_argument("password", type=str, help="Hasło logowania")
 args=parser.parse_args()
@@ -116,7 +117,6 @@ def login_usos(username, password, driver):
         "https://logowanie.us.edu.pl/cas/login?service=https%3A%2F%2Fusosweb.us.edu.pl%2Fkontroler.php%3F_action%3Dlogowaniecas%2Findex&locale=pl")
 
     wait = WebDriverWait(driver, 20)
-    print(username, password)
     # Znajdź pola loginu i hasła
     username_field = wait.until(EC.presence_of_element_located((By.ID, "username")))
     password_field = driver.find_element(By.ID, "password")
