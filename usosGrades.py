@@ -167,4 +167,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print('\n' * 40)
     main()
